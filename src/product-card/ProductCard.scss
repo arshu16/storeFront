@@ -1,0 +1,77 @@
+@import '../Shared.scss';
+%card-text {
+    margin: 5px 0;
+    font-size: 10px;
+}
+
+%grayed-out {
+    color: #666;
+}
+
+.App-product__card {
+    .App-product__card__image {
+        width: 250px;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;        
+
+        .mask {
+            background: rgba(0,0,0,0.6);
+            opacity: 0;
+            position: absolute;
+            top:0;
+            right:0;
+            bottom: 0;
+            left: 0;
+            @extend %animate-300;
+        }
+
+        &:hover {
+            .mask {
+                opacity: 0.3;
+            }
+
+            button {
+                opacity: 1;
+                z-index:1;
+            }
+        }
+
+        button {
+            margin-top: 15px;
+            outline: none;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            font-size: 9px;
+            opacity: 0;
+            cursor: pointer;
+            @extend %animate-300;
+
+            &:first-of-type {
+                background: black;
+            }
+            &:last-of-type {
+                background: #4A4A4D;
+            }
+        }
+    }
+    .App-product__card__brand {
+       @extend %card-text; 
+       @extend %grayed-out;
+    }
+    .App-product__card__title {
+        @extend %card-text;
+        font-size: 12px;
+    }
+    .App-product__card__price {
+        @extend %card-text;
+        @extend %grayed-out;
+    }
+}
