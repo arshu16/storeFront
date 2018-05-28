@@ -1,0 +1,9 @@
+@import '../Shared.scss';
+
+.App-cart-popup__container {
+    .App-cart-popup__title {
+        position: relative;
+        @extend %caret-down;
+    }
+    
+}

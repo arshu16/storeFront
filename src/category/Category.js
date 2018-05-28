@@ -5,7 +5,7 @@ class Category extends Component {
     render() {
         return (
             <div className="Category">
-                Category
+                Hello I am category
             </div>
         );
     }

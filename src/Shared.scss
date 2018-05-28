@@ -1,0 +1,14 @@
+%caret-down {
+    &:after {
+        content: '';
+        position: absolute;
+        right: -11px;
+        top: 5px;
+        width: 0;
+        height: 0;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 4px solid #000;
+        clear: both;
+    }
+}

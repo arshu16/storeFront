@@ -34,21 +34,6 @@
   }
 }
 
-.App-navigation {
-  display: flex;
-  justify-content: space-between;
-  .App-navigation__list-container {
-    .App-navigation__list {
-      list-style: none;
-      display: flex;
-      justify-content: space-between;
-      li {
-        margin-right: 20px;
-      }
-    }
-  }
-}
-
 .App-title {
   font-size: 1.5em;
 }

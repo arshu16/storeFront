@@ -1,29 +1,27 @@
 import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
-import logo from './logo.svg';
 import './App.css';
+import platesHeader from './media/plates-header.jpg';
 import Category from "./category/Category";
 import Cart from "./cart/Cart";
 import Product from "./product/Product";
+import Navigation from './navigation/Navigation';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+        <Navigation/>
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Storefront Assignment</h1>
+          <div className="App-header__subheading">
+            <h1 className="App-header__subheading__title">Plates</h1>
+            <h1 className = "App-header__subheading__description" > Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aliquam at purus pulvinar, placerat turpis ac, interdum metus.In eget massa sed enim hendrerit auctor a eget arcu.Curabitur ac pharetra nisl, sit amet mattis dolor. </h1>
+          </div>
         </header>
-        <p className="App-intro">
-          To get started, delete this header and introduction, and begin building your app in the provided components.
-        </p>
-        <p className="App-intro">
-          We've setup the bare minimum you need to get started, but feel free to add as many components as you see fit.
-        </p>
 
-        <header>
+        {/* <header>
             <Link to="/cart">My Cart</Link>
-        </header>
+        </header> */}
 
         <Route exact path="/" component={Category} />
         <Route path="/cart" component={Cart}/>

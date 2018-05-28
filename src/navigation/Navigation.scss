@@ -1,0 +1,30 @@
+
+@import '../Shared.scss';
+.App-navigation {
+    padding: 0 30px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    align-items: center;
+    font-weight: 600;
+
+    .App-navigation__logo {
+        width: 100px;
+        height: auto;
+    }
+    .App-navigation__list-container {
+        .App-navigation__list {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            li {
+                margin-right: 20px;
+                position: relative;
+                &.expandable {
+                    @extend %caret-down;
+                }
+            }
+        }
+    }
+}
