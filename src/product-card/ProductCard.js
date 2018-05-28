@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './ProductCard.css';
-
+import {
+    Link
+} from 'react-router-dom';
 
 class ProductCard extends Component {
 
@@ -14,8 +16,10 @@ class ProductCard extends Component {
         return (
             <div className="App-product__card">
                 <div className="App-product__card__image" style={style} alt={`${product.title}`}>
-                    <button>VIEW DETAILS</button>
-                    <button>ADD TO CART</button>
+                    <Link to={`/product/${product.title}`}>
+                        <button className="App-product__card__button">VIEW DETAILS</button>
+                    </Link>
+                    <button className="App-product__card__button muted"  to="/product/:">ADD TO CART</button>
                     <div className="mask"></div>
                 </div>
                 <p className="App-product__card__brand">{product.brand}</p>

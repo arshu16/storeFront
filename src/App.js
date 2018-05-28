@@ -9,23 +9,25 @@ import Navigation from './navigation/Navigation';
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <Navigation/>
-        <header className="App-header">
+    console.log('This is the loction', window.location);
+    const header = window.location.pathname === '/' ? <header className="App-header">
           <div className="App-header__subheading">
             <h1 className="App-header__subheading__title">Plates</h1>
             <h1 className = "App-header__subheading__description" > Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aliquam at purus pulvinar, placerat turpis ac, interdum metus.In eget massa sed enim hendrerit auctor a eget arcu.Curabitur ac pharetra nisl, sit amet mattis dolor. </h1>
           </div>
-        </header>
-
+        </header> : null;
+    return (
+      <div className="App">
+        <Navigation/>
+        {header }
         {/* <header>
             <Link to="/cart">My Cart</Link>
         </header> */}
-
-        <Route exact path="/" component={Category} />
-        <Route path="/cart" component={Cart}/>
-        <Route path="/product/:id" component={Product}/>
+        <div className="App-container">
+          <Route exact path="/" component={Category} isHeader="true"/>
+          <Route path="/cart" component={Cart}/>
+          <Route path="/product/:id" component={Product}/>
+        </div>
       </div>
     );
   }

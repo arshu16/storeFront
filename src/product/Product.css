@@ -1,3 +1,63 @@
-.Product {
+.App-breadcrumbs {
+  padding: 0 0 40px 0;
+  font-size: 12px; }
+  .App-breadcrumbs span:not(last-child) {
+    font-weight: 700; }
+  .App-breadcrumbs span:last-child {
+    color: #888; }
 
-}
+.App-product {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between; }
+  .App-product .App-product__image {
+    width: 65%;
+    height: 350px;
+    background-position: center;
+    background-size: cover; }
+  .App-product .App-product__description {
+    width: 35%;
+    padding: 0 20px; }
+    .App-product .App-product__description .App-product__card__brand,
+    .App-product .App-product__description .App-product__card__price {
+      color: #777;
+      font-size: 11px;
+      margin: 0; }
+    .App-product .App-product__description .App-product__card__title {
+      font-size: 21px; }
+    .App-product .App-product__description .App-product__card__price {
+      font-size: 16px; }
+    .App-product .App-product__description .App-product__card__description-text {
+      font-size: 11px;
+      color: #666; }
+    .App-product .App-product__description .App-product__add-to-cart {
+      display: flex;
+      justify-content: center;
+      margin: 24px 0; }
+      .App-product .App-product__description .App-product__add-to-cart .App-product__quantity {
+        display: flex; }
+        .App-product .App-product__description .App-product__add-to-cart .App-product__quantity span {
+          background: #EEE;
+          color: #666;
+          padding: 12px 19px; }
+        .App-product .App-product__description .App-product__add-to-cart .App-product__quantity .App-product__quantity__action-buttons {
+          margin-left: 2px;
+          flex-direction: column;
+          justify-content: space-between; }
+          .App-product .App-product__description .App-product__add-to-cart .App-product__quantity .App-product__quantity__action-buttons span {
+            cursor: pointer;
+            display: block;
+            background: #BBB;
+            padding: 0 5px;
+            height: calc(50% - 1px); }
+            .App-product .App-product__description .App-product__add-to-cart .App-product__quantity .App-product__quantity__action-buttons span:first-child {
+              margin-bottom: 2px; }
+      .App-product .App-product__description .App-product__add-to-cart .App-product__add-to-cart-button {
+        outline: none;
+        border: none;
+        background: black;
+        color: white;
+        padding: 10px 20px;
+        margin-left: 20px;
+        cursor: pointer; }
