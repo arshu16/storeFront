@@ -9,7 +9,6 @@ import Navigation from './navigation/Navigation';
 
 class App extends Component {
   render() {
-    console.log('This is the loction', window.location);
     const header = window.location.pathname === '/' ? <header className="App-header">
           <div className="App-header__subheading">
             <h1 className="App-header__subheading__title">Plates</h1>

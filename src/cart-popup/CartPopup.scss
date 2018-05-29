@@ -1,9 +1,89 @@
 @import '../Shared.scss';
-
 .App-cart-popup__container {
+    cursor: pointer;
+
+    &.App-cart-popup__container--open {
+        .App-cart-popup__title {
+            border-bottom: 1px solid black;
+        }
+    }
+
     .App-cart-popup__title {
         position: relative;
         @extend %caret-down;
     }
-    
+    .App-cart-popup {
+        position: absolute;
+        background: white;
+        top: 41px;
+        right: 16px;
+        width: 300px;
+        box-shadow: -1px 3px 21px -5px rgba(0, 0, 0, 0.82);
+        cursor: default;
+
+        .App-cart-popup__items {
+            margin: 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+            .App-cart-popup__item {
+                display: flex;
+                height: 100px;
+                padding: 10px 0;
+                .App-cart-popup__item__quantity {
+                    color:  #666;
+                    font-size: 8px;
+                }
+                .App-cart-popup__item__image {
+                   width: 100px;
+                   background-size: cover;
+                   background-position: center;
+                }
+                .App-cart-popup__item--description {
+                    padding: 0 10px;
+                    text-align: left;
+                    .App-cart-popup__item__title {
+                        margin: 0;
+                        font-weight: 700;
+                        font-size: 10px;
+                    }
+                    .App-cart-popup__item__brand {
+                        margin: 5px 0;
+                        color: #666;
+                        font-size: 9px;
+                    }
+                    .App-cart-popup__item__price {
+                        margin: 4px 0;
+                        font-size: 10px;
+                    }
+                }
+                .App-cart-popup__item_remove {
+                    margin: 0;
+                    color: #666;
+                    font-size: 9px;
+                    cursor: pointer;
+                }
+            }
+        }
+        .App-cart-popup__total {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px 15px 15px;
+            color: #666;
+            font-weight: 100;
+        }
+
+        .App-cart-popup__action-buttons {
+            display: flex;
+            padding: 15px;
+            justify-content: space-evenly;
+            button {
+                &:first-child {
+                    @extend %light-button;
+                }
+                &:last-child {
+                    @extend %dark-button;
+                }
+            }
+        }
+    }
 }

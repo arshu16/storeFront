@@ -45,15 +45,10 @@
 
         .App-product__card__button {
             margin-top: 15px;
-            outline: none;
-            border: none;
-            padding: 10px 20px;
-            color: white;
-            font-size: 9px;
             opacity: 0;
             cursor: pointer;
             @extend %animate-300;
-            background: black;
+            @extend %dark-button;
             position: relative;
 
             &.muted {
