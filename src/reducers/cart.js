@@ -4,7 +4,7 @@ const cartReducer = (state, action) => {
             if(state && state.id === action.id) { //If we are trying to add the same product to cart, we will increase its quantity
                 return {
                     ...action,
-                    quantity: action.quantity
+                    quantity: action.quantity ? action.quantity : state.quantity + 1 //If quantity was present then use it else just increment
                 }
             }
             return {

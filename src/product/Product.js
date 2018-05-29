@@ -139,7 +139,7 @@ class Product extends Component {
                                 <p className="App-product__card__description-text">{this.state.product.description}</p>
                             </div>
                             <div className="App-product__add-to-cart">
-                                < QuantityCounter counter = {
+                                <QuantityCounter disableAt={0} counter = {
                                     this.state.product.quantity || 0
                                 }
                                 increaseClick = {

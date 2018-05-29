@@ -4,27 +4,34 @@ import {
     Link
 } from 'react-router-dom';
 import QuantityCounter from '../quantity-counter/QuantityCounter';
+import {
+    bindActionCreators
+} from 'redux';
+import * as Actions from '../actions';
+import {
+    connect
+} from 'react-redux';
 
 class Cart extends Component {
-    constructor() {
-        super();
-        this.state = {
-            productsInCart: [{
-                    "title": "Blue Stripe Stoneware Plate",
-                    "brand": "Kiriko",
-                    "price": 40,
-                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum metus. In eget massa sed enim hendrerit auctor a eget.",
-                    "image": "blue-stripe-stoneware-plate.jpg"
-                },
-                {
-                    "title": "Hand Painted Blue Flat Dish",
-                    "brand": "Kiriko",
-                    "price": 28,
-                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum metus. In eget massa sed enim hendrerit auctor a eget arcu. Curabitur ac pharetra nisl, sit amet mattis dolor.",
-                    "image": "hand-painted-blue-flat-dish.jpg"
-                },
-            ]
-        }
+    constructor(props) {
+        super(props);
+    }
+
+     getValue(cart) {
+         return Object.keys(cart).reduce((acc, datum) => {
+             acc += cart[datum].price * cart[datum].quantity;
+             return acc;
+         }, 0) || 0;
+     }
+
+     increaseQuantity(e, product) {
+        e.stopPropagation();
+        this.props.actions.increaseProductQuantity(product.title);
+    }
+
+    decreaseQuantity(e, product) {
+        e.stopPropagation();
+        this.props.actions.decreaseProductQuantity(product.title);
     }
 
     render() {
@@ -44,7 +51,8 @@ class Cart extends Component {
                             </thead>
                             <tbody>
                                 {
-                                    this.state.productsInCart.map(product => {
+                                    Object.keys(this.props.cart).map(key => {
+                                        const product = this.props.cart[key];
                                         const img = require(`../media/${product.image}`);
                                         return <tr key={product.title} >
                                             <td>
@@ -58,15 +66,25 @@ class Cart extends Component {
                                             </td>
                                             <td>
                                                 <div>
-                                                    <span className="App-cart__details-list__item__quantity"> <QuantityCounter counter={product.quantity}/></span>
+                                                    <span className="App-cart__details-list__item__quantity"> 
+                                                        <QuantityCounter disableAt={1} product={product} counter={product.quantity} increaseClick = {
+                                                            this.increaseQuantity.bind(this)
+                                                        }
+                                                        decreaseClick = {
+                                                            this.decreaseQuantity.bind(this)
+                                                        }/>
+                                                    </span>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div>
-                                                    <p className="App-cart__details-list__item__price">${product.price}</p>
+                                                    <p className="App-cart__details-list__item__price">${product.price * product.quantity}</p>
                                                 </div>
                                             </td>
-                                            <td><div><span className="App-cart__details-list__item__remove">
+                                            <td><div><span className="App-cart__details-list__item__remove" onClick={(e) => {
+                                                e.stopPropagation();
+                                               this.props.actions.removeFromCart.call(this, product.title);
+                                            }}>
                                                 X
                                             </span></div></td>
                                         </tr>
@@ -79,11 +97,11 @@ class Cart extends Component {
                                 <p>CART OVERVIEW</p>
                                 <p>
                                     <span>SUBTOTAL</span>
-                                    <span className="float-right">$56</span>
+                                    <span className="float-right">${this.getValue(this.props.cart)}</span>
                                 </p>
                                 <p>
                                     <span>TOTAL</span>
-                                    <span className="black-color float-right">$56 CAD</span>
+                                    <span className="black-color float-right">${this.getValue(this.props.cart)} CAD</span>
                                 </p>
                             </div>
                         </div>
@@ -91,7 +109,7 @@ class Cart extends Component {
                             <Link to="/">
                                 Continue Shopping
                             </Link>
-                            <button>CHECKOUT ($56.00)</button>
+                            <button>CHECKOUT (${this.getValue(this.props.cart)})</button>
                         </div>
                     </div>
                 </div>
@@ -100,4 +118,15 @@ class Cart extends Component {
     }
 }
 
-export default Cart;
+const mapStateToProps = (state) => ({
+    ...state
+});
+
+/**
+ * Map the actions to props.
+ */
+const mapDispatchToProps = (dispatch) => ({
+    actions: bindActionCreators(Actions, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

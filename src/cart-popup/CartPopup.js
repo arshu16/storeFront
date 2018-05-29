@@ -24,6 +24,7 @@ class CartPopup extends Component {
       }));
     }
 
+    //TODO - Move these utilities to an action maybe?
     getValue(cart) {
       return Object.keys(cart).reduce((acc,datum) => {
         acc += cart[datum].price * cart[datum].quantity;

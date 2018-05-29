@@ -12,7 +12,7 @@ class QuantityCounter extends Component {
             <div className="App-product__quantity">
                 <span>{this.props.counter}</span>
                 <div className="App-product__quantity__action-buttons">
-                    <span onClick={increaseClick}>+</span><span className={this.props.counter > 0 ? '' : 'disabled-mouse-events'} onClick={decreaseClick}>-</span>
+                    <span onClick={(e) => increaseClick(e, this.props.product)}>+</span><span className={this.props.counter > this.props.disableAt ? '' : 'disabled-mouse-events'} onClick={(e) => decreaseClick(e, this.props.product)}>-</span>
                 </div>
             </div>
         );
