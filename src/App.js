@@ -15,6 +15,11 @@ class App extends Component {
             <h1 className = "App-header__subheading__description" > Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aliquam at purus pulvinar, placerat turpis ac, interdum metus.In eget massa sed enim hendrerit auctor a eget arcu.Curabitur ac pharetra nisl, sit amet mattis dolor. </h1>
           </div>
         </header> : null;
+    const customContainerStyle = {
+      'paddingBottom': 0,
+      height: 'calc(100vh - 91px)',
+      background:  '#F5F5F5'
+    };
     return (
       <div className="App">
         <Navigation/>
@@ -22,7 +27,7 @@ class App extends Component {
         {/* <header>
             <Link to="/cart">My Cart</Link>
         </header> */}
-        <div className="App-container">
+        <div className="App-container" style={window.location.pathname === '/cart' ? customContainerStyle : null }>
           <Route exact path="/" component={Category} isHeader="true"/>
           <Route path="/cart" component={Cart}/>
           <Route path="/product/:id" component={Product}/>

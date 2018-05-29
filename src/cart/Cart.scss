@@ -1,3 +1,122 @@
-.Cart {
 
+@import '../Shared.scss';
+.App-cart {
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    h1 {
+        color: #282828;
+        font-weight: 100;
+    }
+
+    .App-cart__details {
+        background: white;
+        padding: 60px 30px 0 30px;
+        .App-cart__details-list {
+            padding-bottom: 32px;
+
+            .App-cart__details-list__table {
+                width: 100%;
+                border-collapse: collapse;
+                thead {
+                    color: #666;
+                    font-size: 10px;
+                    font-weight: 100;
+                    border-bottom: 1px solid #0000001a;
+                    text-align: left;
+                    th {
+                        padding: 10px 0;
+                    }
+                }
+                tbody {
+                    tr {
+                        border-bottom: 1px solid rgba(0,0,0,0.1);
+
+                        td {
+                            >div {
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: flex-start;
+                                align-items: start;
+                                padding: 10px 0;
+
+                                .App-cart__details-list__item__image {
+                                    width: 100px;
+                                    height: 80px;
+                                    background-size: cover;
+                                    background-position: center;
+                                }
+
+                                .App-cart__details-list__item--description {
+                                    margin-left: 5px;
+                                    text-align: left;
+                                }
+
+                                .App-cart__details-list__item__text {
+                                    margin: 0;
+                                    font-size: 13px;
+                                    font-weight: 100;
+                                    &.light {
+                                        color: #666;
+                                        font-size: 9px;
+                                    }
+                                }
+                                .App-cart__details-list__item__price {
+                                    color: #666;
+                                }
+                                .App-cart__details-list__item__remove {
+                                    font-size: 22px;
+                                    color: #666;
+                                    font-weight: 100;
+                                }
+                            }
+                             
+                            &:not(:first-child) {
+                                padding-top: 20px;
+                                padding-bottom: 50px;
+                                padding-right: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .App-cart__overview {
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        padding: 20px 0;
+
+        >div {
+            margin-left: auto;
+            color: #AAA;
+            font-size: 12px;
+            max-width: 220px;
+            text-align: left;
+        }
+    }
+
+    .App-cart__footer {
+        padding: 20px 0;
+        overflow: auto;
+
+        a {
+            float: left;
+            color: black;
+            text-decoration: none;
+            border-bottom: 1px solid black;
+        }
+
+        button {
+            @extend %dark-button;
+            float: right;
+            padding: 15px 20px;
+            font-size: 13px;
+            
+        }
+    }
 }
+

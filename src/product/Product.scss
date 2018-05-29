@@ -54,33 +54,6 @@
             justify-content: center;
             margin: 24px 0;
 
-            .App-product__quantity {
-                display: flex;
-
-                span {
-                    background: #EEE;
-                    color: #666;
-                    padding: 12px 19px
-                }
-
-                .App-product__quantity__action-buttons {
-                    margin-left: 2px;
-                    flex-direction: column;
-                    justify-content: space-between;
-
-                    span {
-                        cursor: pointer;
-                        display: block;
-                        background: #BBB;
-                        padding: 0 5px;
-                        height: calc(50% - 1px);
-
-                        &:first-child {
-                            margin-bottom: 2px;
-                        }
-                    }
-                }
-            }
             .App-product__add-to-cart-button {
                 outline: none;
                 border: none;

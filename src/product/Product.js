@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Product.css';
+import QuantityCounter from '../quantity-counter/QuantityCounter';
 
 /*
 This component tries to search for a product from the ID providecd in the URL
@@ -57,12 +58,7 @@ class Product extends Component {
                                 <p className="App-product__card__description-text">{this.state.product.description}</p>
                             </div>
                             <div className="App-product__add-to-cart">
-                                <div className="App-product__quantity">
-                                    <span>{this.state.counter || 0}</span>
-                                    <div className="App-product__quantity__action-buttons">
-                                        <span>+</span><span>-</span>
-                                    </div>
-                                </div>
+                                <QuantityCounter counter={this.state.counter}/>
                                 <button className="App-product__add-to-cart-button">ADD TO CART</button>
                             </div>
                         </div>
