@@ -1,8 +1,8 @@
 const uuidv4 = require('uuid/v4')
 
 export const addToCart = (product) => ({
-    type: 'ADD_TODO',
-    id: uuidv4(),
+    type: 'ADD_TO_CART',
+    id: product.title,
     ...product
 });
 

@@ -44,3 +44,13 @@
 .black-color  {
     color: black;
 }
+
+.no-border {
+    border-bottom: none !important;
+}
+
+.disabled-mouse-events {
+    pointer-events: none;
+    opacity: 0.7;
+    cursor: not-allowed;
+}

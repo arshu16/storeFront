@@ -1,13 +1,26 @@
 import React, { Component } from 'react';
 import './Category.css';
 import ProductCard from '../product-card/ProductCard';
+import {
+    addToCart
+} from '../actions';
+import {
+    connect
+} from 'react-redux';
+
 
 class Category extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             products: [],
         };
+        this.addToCart = this.addToCart.bind(this);
+    }
+
+    addToCart(e, product) {
+        e.stopPropagation();
+        this.props.addToCartDispatch(e, product);
     }
 
     async componentDidMount() {
@@ -15,7 +28,7 @@ class Category extends Component {
         const json = await response.json();
         let products = json.map(product => {
             return  (
-                <ProductCard key={product.title} product={product}/>
+                <ProductCard onClick={this.addToCart} key={product.title} product={product}/> //This is a presentational component, it should not know the state
             );
         });
         this.setState({
@@ -31,4 +44,20 @@ class Category extends Component {
     }
 }
 
-export default Category;
+const mapStateToProps = state => {
+    return {};
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addToCartDispatch: (e, product) => {
+            dispatch(addToCart(product))
+        }
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Category)
+

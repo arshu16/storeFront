@@ -1,6 +1,12 @@
 const cartReducer = (state, action) => {
     switch (action.type) {
-        case 'ADD_TODO':
+        case 'ADD_TO_CART':
+            if(state && state.id === action.id) { //If we are trying to add the same product to cart, we will increase its quantity
+                return {
+                    ...action,
+                    quantity: action.quantity
+                }
+            }
             return {
                 ...action,
                 quantity: action.quantity || 1
@@ -26,7 +32,7 @@ const cartReducer = (state, action) => {
     }
 };
 
-const cart = (state=[], action) => {
+const cart = (state={}, action) => {
     switch(action.type) {
         case 'ADD_TO_CART': 
         case 'INCREASE_PRODUCT_QUANTITY':
@@ -36,9 +42,12 @@ const cart = (state=[], action) => {
                 [action.id]: cartReducer(state[action.id], action),
             };
         case 'REMOVE_FROM_CART':
-            return state.filter(p => {
-                return p.id !== action.id;
-            });
+            return Object.keys(state).reduce((acc, datum) => {
+                if (datum !== action.id) {
+                    acc[datum] = state[datum];
+                }
+                return acc;
+            }, {});
         default: 
             return state;
     }

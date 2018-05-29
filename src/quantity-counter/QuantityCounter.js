@@ -3,12 +3,16 @@ import './QuantityCounter.css';
 
 class QuantityCounter extends Component {
     render() {
-        const {counter} = this.props;
+        const {
+            counter,
+            increaseClick, 
+            decreaseClick
+        } = this.props;
         return (
             <div className="App-product__quantity">
-                <span>{counter || 0}</span>
+                <span>{this.props.counter}</span>
                 <div className="App-product__quantity__action-buttons">
-                    <span>+</span><span>-</span>
+                    <span onClick={increaseClick}>+</span><span className={this.props.counter > 0 ? '' : 'disabled-mouse-events'} onClick={decreaseClick}>-</span>
                 </div>
             </div>
         );
