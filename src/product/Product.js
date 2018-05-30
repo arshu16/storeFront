@@ -8,6 +8,7 @@ import * as Actions from '../actions';
 import {
     connect
 } from 'react-redux';
+import {Link} from 'react-router-dom';
 
 /*
 This component tries to search for a product from the ID providecd in the URL
@@ -34,7 +35,11 @@ class Product extends Component {
         const json = await response.json();
         let products = json.filter(x => x.title === this.state.id);
         let {id} = this.state;
-        if (products.length && this.props.cart && this.props.cart[products[0].title]) { //Check if this product is avaiable in the cart or not
+        //Do nothing if it is not a valid product
+        if(!products.length) {
+            return;
+        }
+        if (this.props.cart && this.props.cart[products[0].title]) { //Check if this product is avaiable in the cart or not
             products[0] = {
                 ...this.props.cart[products[0].title]
             }
@@ -119,7 +124,7 @@ class Product extends Component {
         }
 
         let breadcrumbs = <div className="App-breadcrumbs">
-                    <span>HOME</span> / 
+                    <span><Link to={'/'}>HOME</Link></span> / 
                     <span>PLATES</span> / 
                     <span>{this.state.id}</span>
                 </div>;

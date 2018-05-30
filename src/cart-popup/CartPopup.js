@@ -62,9 +62,9 @@ class CartPopup extends Component {
               <span>TOTAL</span>
               <span>${this.getValue(cart)}</span>
           </div>
-          <div className="App-cart-popup__action-buttons">
+          <div className="App-cart-popup__action-buttons" onClick={this.openPopup}>
             <Link to={`/cart`}>
-              <button>VIEW DETAILS</button>
+              <button>VIEW CART</button>
             </Link>
             <button>CHECKOUT</button>
           </div>
