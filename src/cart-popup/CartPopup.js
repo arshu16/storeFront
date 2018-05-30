@@ -73,12 +73,17 @@ class CartPopup extends Component {
         </div>
       </div>;
       return (
-        <div className={`App-cart-popup__container ${this.state.isPopupOpen ? 'App-cart-popup__container--open': ''}`} onClick={this.openPopup}>
-          <p className="App-cart-popup__title">My Cart ({Object.keys(this.props.cart).length})</p>
+        <React.Fragment>
           {
-            this.state.isPopupOpen ? popup : null
+            this.state.isPopupOpen ? <div className="App-cart-popup__mask" onClick={this.openPopup}></div> : null
           }
-        </div>
+          <div className={`App-cart-popup__container ${this.state.isPopupOpen ? 'App-cart-popup__container--open': ''}`}>
+            <p className="App-cart-popup__title" onClick={this.openPopup}>My Cart ({Object.keys(this.props.cart).length})</p>
+            {
+              this.state.isPopupOpen ? popup : null
+            }
+          </div>
+        </React.Fragment>
       );
     }
 }
