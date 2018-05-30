@@ -12,7 +12,7 @@ import {
     connect
 } from 'react-redux';
 
-class Cart extends Component {
+export class Cart extends Component {
     constructor(props) {
         super(props);
     }
